@@ -2,8 +2,6 @@
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/thunderg/overlay
 
-TARGET_PREBUILT_KERNEL := device/lge/thunderg/kernel_test
-
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/lge/thunderg/kernel
 else
