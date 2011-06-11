@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),thunderg)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),aloha)
 
 LOCAL_PATH:= $(call my-dir)
 # HAL module implemenation, not prelinked and stored in
@@ -28,7 +28,7 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 
 LOCAL_SHARED_LIBRARIES := liblog
 
-LOCAL_MODULE := lights.thunderg
+LOCAL_MODULE := lights.aloha
 
 include $(BUILD_SHARED_LIBRARY)
 

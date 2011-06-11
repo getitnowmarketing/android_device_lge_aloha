@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_thunderg.mk
+    $(LOCAL_DIR)/device_aloha.mk

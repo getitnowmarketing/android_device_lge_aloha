@@ -27,17 +27,17 @@
          Turn off to use new Gingerbread animation -->
     <bool name="config_animateScreenLights">false</bool>
     
-    <bool name="config_unplugTurnsOnScreen">true</bool>
+    <bool name="config_unplugTurnsOnScreen">false</bool>
     
 <!--    <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string> -->
     
     <!-- crespo doesn't handle this blur effect very quickly. -->
     <bool name="config_sf_slowBlur">true</bool>
-<!-- Do not work at this moment     
+     
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb0"</item>
     </string-array>
--->
+
     <string-array translatable="false" name="config_tether_upstream_regexs">
 <!--    	<item>"wlan0"</item> -->
     	<item>"rmnet\\d"</item>
@@ -113,7 +113,7 @@
     <bool name="config_enableScreenOnAnimation">false</bool>
 
     <!-- Enable the screen-off animation -->
-    <bool name="config_enableScreenOffAnimation">true</bool>
+    <bool name="config_enableScreenOffAnimation">false</bool>
 
     <!-- Component name of the service providing network location support. -->
     <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
@@ -121,8 +121,4 @@
     <!-- Component name of the service providing geocoder API support. -->
     <string name="config_geocodeProvider">com.google.android.location.GeocodeProvider</string>
 
-    <!-- The orientation in which case volume buttins should be swapped.
-         See ROTATION_0, ROTATION_90, ROTATION_180, ROTATION_270 in android.view.Surface
-         for more details about values -->
-    <integer name="swap_volume_keys_orientation">1</integer>
 </resources>

@@ -31,6 +31,8 @@
 #include <linux/time.h>
 #endif
 
+#define CONFIG_MT9T111
+
 #define MSM_CAM_IOCTL_MAGIC 'm'
 
 #define MSM_CAM_IOCTL_GET_SENSOR_INFO \
@@ -114,6 +116,43 @@
 #define MSM_CAM_IOCTL_AF_CTRL_DONE \
 	_IOW(MSM_CAM_IOCTL_MAGIC, 26, struct msm_ctrl_cmt_t *)
 
+/* LGE_CHANGES_S [cis@lge.com] 2009-11-20, [VS740] for autofocus */
+#if defined(CONFIG_MT9T111)
+#define MSM_CAMERA_AF_NORMAL	0
+#define MSM_CAMERA_AF_MACRO		1
+#define MSM_CAMERA_AF_AUTO		2
+	
+struct msm_af_cfg_cmd {
+	int cmd_type;
+	int mode;
+};
+	
+struct msm_flash_cfg_cmd {
+ int cmd_type;
+ int mode;
+};
+
+#define MSM_CAM_IOCTL_YUV_AF_CTRL_PARAM_INIT	_IOR(MSM_CAM_IOCTL_MAGIC, 27, struct msm_ctrl_cmt_t *)
+#define MSM_CAM_IOCTL_YUV_AF_CTRL_CONFIG_START	_IOW(MSM_CAM_IOCTL_MAGIC, 28, struct msm_ctrl_cmt_t *)
+#define MSM_CAM_IOCTL_GET_PREFLASH_VALUES		_IOW(MSM_CAM_IOCTL_MAGIC, 29, struct msm_ctrl_cmt_t *)
+#define MSM_CAM_IOCTL_YUV_AF_CTRL_GET_STATUS	_IOW(MSM_CAM_IOCTL_MAGIC, 30, struct msm_ctrl_cmt_t *)
+#endif
+/* LGE_CHANGES_E [cis@lge.com] 2009-11-20, [VS740] */
+
+/* LGE_CHANGES_S [mina@lge.com] 2009-12-24, [VS740] for hidden test menu */
+#if defined (CONFIG_MT9T111)
+#define MSM_CAM_IOCTL_ISO_CTRL_SET				_IOW(MSM_CAM_IOCTL_MAGIC, 31, struct msm_ctrl_cmt_t *)
+#define MSM_CAM_IOCTL_SCNEMODE_CTRL_SET			_IOW(MSM_CAM_IOCTL_MAGIC, 32, struct msm_ctrl_cmt_t *)
+#ifdef CONFIG_LGE_DIAGTEST
+#define MSM_CAM_IOCTL_SENSOR_ALWAYS_ON_TEST		_IOW(MSM_CAM_IOCTL_MAGIC, 33, uint32_t *)
+#endif
+
+#define MSM_CAM_IOCTL_GET_FLASH_BRIGHTNESS		_IOW(MSM_CAM_IOCTL_MAGIC, 34, uint32_t *)
+#define MSM_CAM_IOCTL_YUV_AF_CTRL_CANCEL   _IOW(MSM_CAM_IOCTL_MAGIC, 35, struct msm_ctrl_cmt_t *)
+
+#endif
+/* LGE_CHANGES_E [mina@lge.com] 2009-12-24, [VS740] */
+
 #define MAX_SENSOR_NUM  3
 #define MAX_SENSOR_NAME 32
 
@@ -146,9 +185,23 @@ struct msm_ctrl_cmd {
 	int resp_fd; /* FIXME: to be used by the kernel, pass-through for now */
 };
 
+/* LGE_CHANGES_S [cis@lge.com] 2009-11-20, [VS740] for autofocus */
+#if defined (CONFIG_MT9T111)
+#define YUV_AF_MODE_LOCKED			1
+#define YUV_AF_MODE_UNLOCKED		2
+#define YUV_AF_MODE_LOCKED_FAILED	0xff
+#define YUV_AF_MODE_INIT			4
+#endif
+/* LGE_CHANGES_E [cis@lge.com] 2009-11-20, [VS740] */
+
 struct msm_vfe_evt_msg {
 	unsigned short type;	/* 1 == event (RPC), 0 == message (adsp) */
 	unsigned short msg_id;
+/* LGE_CHANGES_S [cis@lge.com] 2009-11-20, [VS740] for autofocus */
+#if defined(CONFIG_MT9T111)
+	int af_mode_locked;
+#endif
+/* LGE_CHANGES_E [cis@lge.com] 2009-11-20, [VS740] */
 	unsigned int len;	/* size in, number of bytes out */
 	void *data;
 };
@@ -391,7 +444,36 @@ struct msm_snapshot_pp_status {
 #define CFG_GET_AF_MAX_STEPS		26
 #define CFG_GET_PICT_MAX_EXP_LC		27
 #define CFG_SEND_WB_INFO    28
-#define CFG_MAX 			29
+/* LGE_CHANGES_S [cis@lge.com] 2009-11-20, [VS740] for af start control */
+#if defined (CONFIG_MT9T111)
+#define CFG_SET_AF_PARAM_INIT	29
+#define CFG_SET_AF_START		30
+#define CFG_GET_AF_STATUS		31
+#define CFG_SET_ISO				32
+#define CFG_SET_SCENEMODE		33
+#define CFG_GET_FLASH_BRIGHTNESS 34
+#define CFG_SET_PRE_FLASH				35
+#define CFG_SET_AF_CANCEL			       36
+#define CFG_SET_REG_GROUP_ONE          37
+#define CFG_SET_REG_GROUP_TWO          38
+#define CFG_SET_REG_GROUP_THREE                39
+#define CFG_SET_REG_GROUP_FOUR                 40
+#define CFG_SET_REG_GROUP_FIVE                 41
+#define CFG_SET_REG_GROUP_SIX          42
+#define CFG_SET_REG_GROUP_SEVEN                43
+#define CFG_SET_REG_GROUP_EIGHT                44
+#define CFG_SET_REG_GROUP_NINE                 45
+#define CFG_SET_REG_GROUP_TEN          46
+#define CFG_SET_REG_GROUP_ELEVEN        47
+#define CFG_SET_REG_GROUP_TWELVE        48
+#define CFG_SET_REG_GROUP_THIRDTEEN     49
+#define CFG_SET_REG_GROUP_FOURTEEN      50
+#define CFG_SET_REG_GROUP_FIFTEEN       51
+#define CFG_MAX				52
+#else	/* origin */
+#define CFG_MAX					29
+#endif
+/* LGE_CHANGES_E [cis@lge.com] 2009-11-20, [VS740] */
 
 /* LGE_CHANGE_S [junyeong.han@lge.com] Add CFG values for auto focus */
 /* 2010-05-02: Add auto-focus values */
@@ -415,6 +497,10 @@ struct msm_snapshot_pp_status {
 #define SENSOR_PREVIEW_MODE		0
 #define SENSOR_SNAPSHOT_MODE		1
 #define SENSOR_RAW_SNAPSHOT_MODE	2
+#ifdef CONFIG_MT9T111
+#define SENSOR_VIDEO_RECORDING_MODE 3
+#define SENSOR_VIDEO_MMS_RECORDING_MODE 4
+#endif
 
 #define SENSOR_QTR_SIZE			0
 #define SENSOR_FULL_SIZE		1
@@ -475,6 +561,14 @@ struct sensor_cfg_data {
 
 	union {
 		int8_t effect;
+/* LGE_CHANGES_S [cis@lge.com] 2009-12-30, [VS740] implementation of whitebalance */
+#if defined (CONFIG_MT9T111)
+		int8_t wb;
+		int8_t brightness;
+		int8_t iso;
+		int8_t scenemode;
+#endif
+/* LGE_CHANGES_E [cis@lge.com] 2009-12-30, [VS740] */		
 		uint8_t lens_shading;
 		uint16_t prevl_pf;
 		uint16_t prevp_pl;
@@ -489,26 +583,32 @@ struct sensor_cfg_data {
 		struct wb_info_cfg wb_info;
 	} cfg;
 };
-// LGE ejoon.kim@lge.com mode add
+
+/* LGE_CHANGES_S [cis@lge.com] 2010-01-12, [VS740] implement camera functions */
+#if defined (CONFIG_MT9T111)
+// 2010.01.04 cis implementation whitebalance
 #define CAMERA_YUV_WB_AUTO						1
 #define CAMERA_YUV_WB_INCANDESCENT			2
 #define CAMERA_YUV_WB_DAYLIGHT				3
 #define CAMERA_YUV_WB_FLUORESCENT			4
 #define CAMERA_YUV_WB_CLOUDY_DAYLIGHT		5
 
+//LG_FW : 2010.01.08 cis - use to camera brightness, iso
 #define CAMERA_YUV_ISO_AUTO		1
 #define CAMERA_YUV_ISO_800			2
 #define CAMERA_YUV_ISO_400			3
 #define CAMERA_YUV_ISO_200			4
 #define CAMERA_YUV_ISO_100			5
 
+//LG_FW : 2010.01.12 cis - use to camera scenemode
 #define CAMERA_SCENEMODE_AUTO 				1
 #define CAMERA_SCENEMODES_PORTRAIT 			2
 #define CAMERA_SCENEMODES_LANDSCAPE 		3
 #define CAMERA_SCENEMODES_SPORTS 			4
 #define CAMERA_SCENEMODES_NIGHT 				5
 #define CAMERA_SCENEMODES_SUNSET 			6
-// LGE End
+#endif
+ /* LGE_CHANGES_E [cis@lge.com] 2010-01-12, [VS740] */
 
 #define GET_NAME			0
 #define GET_PREVIEW_LINE_PER_FRAME	1
