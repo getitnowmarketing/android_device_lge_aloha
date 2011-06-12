@@ -87,3 +87,4 @@ dalvik.vm.heapsize=32m
 ro.phone.log_emergency_calls=0
 dalvik.vm.execution-mode=int:jit
 ro.cdma.data_retry_config = max_retries=infinite,0,0,60000,120000,480000,900000
+ro.ril.ecclist=911,*911,#911
