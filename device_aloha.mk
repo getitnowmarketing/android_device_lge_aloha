@@ -186,7 +186,7 @@ PRODUCT_COPY_FILES += \
     vendor/lge/aloha/proprietary/lib/liblgerft.so:system/lib/liblgerft.so \
     vendor/lge/aloha/proprietary/lib/libbcmwl.so:system/lib/libbcmwl.so \
     vendor/lge/aloha/proprietary/lib/libdss.so:system/lib/libdss.so \
-#    vendor/lge/aloha/proprietary/bin/rild:system/bin/rild 
+    vendor/lge/aloha/proprietary/bin/rild:system/bin/rild 
 
 #propietary libril
 PRODUCT_COPY_FILES += \

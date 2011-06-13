@@ -52,7 +52,7 @@ WIFI_DRIVER_HAS_LGE_SOFTAP := true
 
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/aloha/netd/UsbController.cpp
-BOARD_CUSTOM_RILD := ../../../device/lge/aloha/rild/rild.c
+#BOARD_CUSTOM_RILD := ../../../device/lge/aloha/rild/rild.c
 
 BOARD_EGL_CFG := device/lge/aloha/files/lib/egl/egl.cfg
 

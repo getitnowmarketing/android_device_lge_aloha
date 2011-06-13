@@ -86,5 +86,9 @@ dalvik.vm.dexopt-flags=m=y
 dalvik.vm.heapsize=32m
 ro.phone.log_emergency_calls=0
 dalvik.vm.execution-mode=int:jit
+windowsmsg.max_events_per_sec=60
 ro.cdma.data_retry_config = max_retries=infinite,0,0,60000,120000,480000,900000
 ro.ril.ecclist=911,*911,#911
+net.tcp.buffersize.evdo=5840,46720,93440,5840,23360,93440
+net.tcp.buffersize.1xrtt=5840,46720,58400,5840,23360,58400
+net.tcp.buffersize.cdma=5840,46720,58400,5840,23360,58400
