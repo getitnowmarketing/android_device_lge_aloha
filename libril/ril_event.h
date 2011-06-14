@@ -48,7 +48,10 @@ void ril_timer_add(struct ril_event * ev, struct timeval * tv);
 void ril_event_del(struct ril_event * ev);
 
 // Remove event from timer list
-bool ril_timer_delete(struct ril_event * ev);
+void ril_timer_delete(struct ril_event * ev);
+
+//send timer event list pointer
+void* ril_timer_list();
 
 // Event loop
 void ril_event_loop();

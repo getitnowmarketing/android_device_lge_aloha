@@ -189,8 +189,8 @@ PRODUCT_COPY_FILES += \
     vendor/lge/aloha/proprietary/bin/rild:system/bin/rild 
 
 #propietary libril
-PRODUCT_COPY_FILES += \
-    vendor/lge/aloha/proprietary/lib/libril.so:system/lib/libril.so \
+#PRODUCT_COPY_FILES += \
+#    vendor/lge/aloha/proprietary/lib/libril.so:system/lib/libril.so \
 
 # OMX
 PRODUCT_COPY_FILES += \

@@ -39,7 +39,7 @@ on boot
 	chown compass system /sys/bus/i2c/drivers/proximity_gp2ap/4-0044/enable
 	chmod 0666 /sys/bus/i2c/drivers/proximity_gp2ap/4-0044/enable
 ## USB
-	chmod 0666 /sys/devices/platform/msm_hsusb_periphera/composition
+	chmod 0666 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
 	chown system graphics /dev/hw3d
 	chmod 0660 /dev/hw3d
@@ -202,8 +202,8 @@ service akmd2 /system/bin/akmd2
 	group system
 
 ## USB
-service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyHSUSB0
-#service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0 
+#service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyHSUSB0
+service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0 
 	disabled
 
 on property:init.svc.bootanim=stopped

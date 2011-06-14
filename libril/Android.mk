@@ -4,7 +4,6 @@ ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),aloha)
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES:= \
     ril.cpp \
@@ -24,4 +23,5 @@ LOCAL_LDLIBS += -lpthread
 
 include $(BUILD_SHARED_LIBRARY)
 
-endif # TARGET_BOOTLOADER_BOARD_NAME==z71
+endif
+

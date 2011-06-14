@@ -79,7 +79,7 @@ WITH_JIT := true
 
 
 TARGET_PROVIDES_LIBAUDIO := true 
-#TARGET_PROVIDES_LIBRIL := true
+TARGET_PROVIDES_LIBRIL := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun"
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 
