@@ -4,7 +4,7 @@
     <apn carrier="Verizon"
         mcc="310"
         mnc="004"
-        apn=""
+        apn="gnm"
         user="*"
         server="*"
         password="*"

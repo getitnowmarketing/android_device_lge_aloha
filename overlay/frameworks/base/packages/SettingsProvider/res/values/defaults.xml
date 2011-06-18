@@ -28,16 +28,17 @@
 -->
 
 <resources>
-    <add-resource type="bool" name="def_data_roaming"/>
-	<add-resource type="bool" name="def_electron_beam_animation_off"/>
+    <add-resource type="integer" name="def_data_roaming"/>
 	<add-resource type="integer" name="def_preferred_network_mode"/>
 	<add-resource type="integer" name="def_preferred_cdma_subscription"/>
 	<add-resource type="integer" name="def_cdma_cell_broadcast_sms"/>
-    <bool name="def_data_roaming">true</bool>
-    <bool name="def_electron_beam_animation_off">false</bool>
+	<add-resource type="integer" name="def_socket_data_call_enable"/>
+    <integer name="def_data_roaming">1</integer>
     <integer name="def_preferred_network_mode">4</integer>
     <integer name="def_preferred_cdma_subscription">1</integer>
     <integer name="def_cdma_cell_broadcast_sms">1</integer>
+    <integer name="def_socket_data_call_enable">1</integer>
+    <integer name="def_screen_off_timeout">30000</integer>
 </resources>
 
 

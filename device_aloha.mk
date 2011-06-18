@@ -152,7 +152,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.clientidbase.gmm=android-lge \
     ro.com.google.clientidbase.yt=android-lge \
     ro.cdma.homesystem=64,65,76,77,78,79,80,81,82,83 \
-    mobiledata.interfaces=rmnet0 \
     ro.com.android.dataroaming=true \
     ro.cdma.otaspnumschema=SELC,1,80,99 \
     ro.telephony.call_ring.multiple=false \

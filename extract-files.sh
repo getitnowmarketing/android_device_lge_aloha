@@ -76,6 +76,8 @@ lib/libmmipl.so
 lib/libmmjpeg.so
 lib/liboemcamera.so
 
+lib/libnetmgr.so
+
 lib/libmm-abl.so
 lib/libmm-adspsvc.so
 lib/libOmxAacDec.so

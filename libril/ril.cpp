@@ -208,6 +208,8 @@ static void dispatchCdmaBrSmsCnf(Parcel &p, RequestInfo *pRI);
 static void dispatchRilCdmaSmsWriteArgs(Parcel &p, RequestInfo *pRI);
 static int responseInts(Parcel &p, void *response, size_t responselen);
 static int responseStrings(Parcel &p, void *response, size_t responselen);
+static int responseStringsNetworks(Parcel &p, void *response, size_t responselen);
+static int responseStrings(Parcel &p, void *response, size_t responselen, bool network_search);
 static int responseString(Parcel &p, void *response, size_t responselen);
 static int responseVoid(Parcel &p, void *response, size_t responselen);
 static int responseCallList(Parcel &p, void *response, size_t responselen);
@@ -1288,6 +1290,15 @@ responseInts(Parcel &p, void *response, size_t responselen) {
 
 /** response is a char **, pointing to an array of char *'s */
 static int responseStrings(Parcel &p, void *response, size_t responselen) {
+    return responseStrings(p, response, responselen, false);
+}
+
+static int responseStringsNetworks(Parcel &p, void *response, size_t responselen) {
+    return responseStrings(p, response, responselen, true);
+}
+
+/** response is a char **, pointing to an array of char *'s */
+static int responseStrings(Parcel &p, void *response, size_t responselen, bool network_search) {
     int numStrings;
 
     if (response == NULL && responselen != 0) {
@@ -3107,6 +3118,7 @@ requestToString(int request) {
         case RIL_REQUEST_GET_SMSC_ADDRESS: return "GET_SMSC_ADDRESS";
         case RIL_REQUEST_SET_SMSC_ADDRESS: return "SET_SMSC_ADDRESS";
         case RIL_REQUEST_REPORT_SMS_MEMORY_STATUS: return "REPORT_SMS_MEMORY_STATUS";
+        case RIL_REQUEST_REPORT_STK_SERVICE_IS_RUNNING: return "REPORT_STK_SERVICE_IS_RUNNING";
         case RIL_UNSOL_RESPONSE_RADIO_STATE_CHANGED: return "UNSOL_RESPONSE_RADIO_STATE_CHANGED";
         case RIL_UNSOL_RESPONSE_CALL_STATE_CHANGED: return "UNSOL_RESPONSE_CALL_STATE_CHANGED";
         case RIL_UNSOL_RESPONSE_NETWORK_STATE_CHANGED: return "UNSOL_RESPONSE_NETWORK_STATE_CHANGED";
